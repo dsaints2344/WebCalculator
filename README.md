@@ -1,5 +1,5 @@
 # WebCalculator
-This repository contains my first ever HTML/CSS/JS application
+This repository contains an HTML/CSS/JS calculator
 
 
 ## Description
