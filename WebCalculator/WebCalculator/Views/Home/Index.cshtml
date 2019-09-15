@@ -1,31 +1,45 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="background">
+        <div id="result"></div>
+        <div id="main">
+            <div id="first-rows">
+                <button class="del-bg" id="delete">CE</button>
+                <button value="+" id="addition" onClick="getElementById('result').innerHTML = ''" class="btn-style opera-bg value align operator">+</button>
+            </div>
+            <div class="rows">
+                <button value="7" class="btn-style num-bg num first-child">7</button>
+                <button value="8" class="btn-style num-bg num">8</button>
+                <button value="9" class="btn-style num-bg num">9</button>
+                <button value="-" class="btn-style opera-bg operator">-</button>
+            </div>
+            <div class="rows">
+                <button value="4" class="btn-style num-bg num first-child">4</button>
+                <button value="5" class="btn-style num-bg num">5</button>
+                <button value="6" class="btn-style num-bg num">6</button>
+                <button value="*" class="btn-style opera-bg operator">x</button>
+            </div>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            <div class="rows">
+                <button value="1" id="numberOne" onclick="getElementById('result').innerHTML = 1" class="btn-style num-bg num first-child">1</button>
+                <button value="2" class="btn-style num-bg num">2</button>
+                <button value="3" class="btn-style num-bg num">3</button>
+                <button value="/" class="btn-style opera-bg operator">/</button>
+            </div>
+            <div class="rows">
+                <button value="0" class="num-bg zero" id="delete">0</button>
+                <button value="=" id="eqn-bg" onClick="getElementById('result').innerHTML = 2" class="eqn align">=</button>
+                <script src="../../Scripts/Services/CalculatorServices.js"></script>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</body>
+</html>

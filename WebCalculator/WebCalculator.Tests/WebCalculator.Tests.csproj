@@ -99,7 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Services\ServicesTests.cs" />
+    <Compile Include="UI\UI Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -108,11 +109,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CalculatorService\CalculatorService.csproj">
+      <Project>{D404C322-31BB-4FDC-8A9F-40A636ECB2E8}</Project>
+      <Name>CalculatorService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebCalculator\WebCalculator.csproj">
       <Project>{C7556115-8488-408E-8614-EF0404A14CB5}</Project>
       <Name>WebCalculator</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
