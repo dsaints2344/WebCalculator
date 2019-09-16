@@ -17,18 +17,20 @@ namespace WebCalculator.Tests.UI
         [SetUp]
         public void startBrowser()
         {
-            driver = new ChromeDriver(@"D:\ddelo\Downloads\chromedriver_win32");
+            driver = new ChromeDriver(@"C:\Users\gerzo\Downloads\chromedriver_win32");
             IJavaScriptExecutor js = (IJavaScriptExecutor) driver;
-            js.ExecuteScript(
-                "function display() {\r\n                    getElementById('result').innerHTML = 1;\r\n                }");
+            js.ExecuteScript("function display(id) { document.getElementById('result').innerHTML = document.getElementBy(id).value;}");
+            
         }
 
         [Test]
 
         public void sumOnePlusOneEqualsTwo()
         {
+           
             driver.Url =
-                @"C:\Users\ddelo\Source\Repos\WebCalculator\WebCalculator\WebCalculator\Views\Home\index.html";
+                @"C:\Users\gerzo\Documents\GitHub\WebCalculator\WebCalculator\WebCalculator\Views\Home\index.html";
+            Thread.Sleep(30000);
             driver.FindElement(By.Id("numberOne")).Click();
             Assert.AreEqual("1", driver.FindElement(By.Id("result")).Text);
             driver.FindElement(By.Id("addition")).Click();

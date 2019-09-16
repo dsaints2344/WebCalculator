@@ -1,45 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css" rel="stylesheet">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <div id="background">
-        <div id="result"></div>
-        <div id="main">
-            <div id="first-rows">
-                <button class="del-bg" id="delete">CE</button>
-                <button value="+" id="addition" onClick="getElementById('result').innerHTML = ''" class="btn-style opera-bg value align operator">+</button>
-            </div>
-            <div class="rows">
-                <button value="7" class="btn-style num-bg num first-child">7</button>
-                <button value="8" class="btn-style num-bg num">8</button>
-                <button value="9" class="btn-style num-bg num">9</button>
-                <button value="-" class="btn-style opera-bg operator">-</button>
-            </div>
-            <div class="rows">
-                <button value="4" class="btn-style num-bg num first-child">4</button>
-                <button value="5" class="btn-style num-bg num">5</button>
-                <button value="6" class="btn-style num-bg num">6</button>
-                <button value="*" class="btn-style opera-bg operator">x</button>
-            </div>
-
-            <div class="rows">
-                <button value="1" id="numberOne" onclick="getElementById('result').innerHTML = 1" class="btn-style num-bg num first-child">1</button>
-                <button value="2" class="btn-style num-bg num">2</button>
-                <button value="3" class="btn-style num-bg num">3</button>
-                <button value="/" class="btn-style opera-bg operator">/</button>
-            </div>
-            <div class="rows">
-                <button value="0" class="num-bg zero" id="delete">0</button>
-                <button value="=" id="eqn-bg" onClick="getElementById('result').innerHTML = 2" class="eqn align">=</button>
-                <script src="../../Scripts/Services/CalculatorServices.js"></script>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+﻿@section SPAViews {
+    @Html.Action("GetHtmlPage", "controllername", new { path = "~/Views/Home/index.html" })
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/app")
+}

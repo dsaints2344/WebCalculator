@@ -26,5 +26,11 @@ namespace WebCalculator.Controllers
 
             return View();
         }
+
+        [ChildActionOnly]
+        public ActionResult GetHtmlPage(string path)
+        {
+            return new FilePathResult(path, "text/html");
+        }
     }
 }
