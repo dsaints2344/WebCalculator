@@ -17,9 +17,9 @@ namespace WebCalculator.Tests.UI
         [SetUp]
         public void startBrowser()
         {
-            driver = new ChromeDriver(@"C:\Users\gerzo\Downloads\chromedriver_win32");
+            driver = new ChromeDriver(@"D:\ddelo\Downloads\chromedriver_win32\");
             IJavaScriptExecutor js = (IJavaScriptExecutor) driver;
-            js.ExecuteScript("function display(id) { document.getElementById('result').innerHTML = document.getElementBy(id).value;}");
+            //js.ExecuteScript("function display(id) { document.getElementById('result').innerHTML = document.getElementBy(id).value;}");
             
         }
 
@@ -29,17 +29,22 @@ namespace WebCalculator.Tests.UI
         {
            
             driver.Url =
-                @"C:\Users\gerzo\Documents\GitHub\WebCalculator\WebCalculator\WebCalculator\Views\Home\index.html";
-            Thread.Sleep(30000);
+                @"C:\Users\ddelo\source\repos\WebCalculator\WebCalculator\WebCalculator\Views\Home\index.html";
             driver.FindElement(By.Id("numberOne")).Click();
-            Assert.AreEqual("1", driver.FindElement(By.Id("result")).Text);
+            Assert.AreEqual("1", FindResultValue());
             driver.FindElement(By.Id("addition")).Click();
-            Assert.AreEqual("", driver.FindElement(By.Id("result")).Text);
+            Assert.AreEqual("1+", FindResultValue());
             driver.FindElement(By.Id("numberOne")).Click();
-            Assert.AreEqual("1", driver.FindElement(By.Id("result")).Text);
+            Assert.AreEqual("1+1", FindResultValue());
             driver.FindElement(By.Id("eqn-bg")).Click();
-            Assert.AreEqual("2", driver.FindElement(By.Id("result")).Text);
+            Assert.AreEqual("2", FindResultValue());
             
+        }
+
+        private string FindResultValue()
+        {
+            string valueResult = driver.FindElement(By.Id("resultInput")).GetAttribute("value");
+            return valueResult;
         }
 
         [TearDown]

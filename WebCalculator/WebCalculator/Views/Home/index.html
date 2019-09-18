@@ -9,11 +9,13 @@
 </head>
 <body>
     <div id="background">
-        <div id="result"></div>
+        <div id="result">
+            <input type="text" placeholder="0" name="Result" id="resultInput"/>
+        </div>
         <div id="main">
             <div id="first-rows">
                 <button class="del-bg" id="delete">CE</button>
-                <button value="+" id="addition" onClick="display('addition')" class="btn-style opera-bg value align operator">+</button>
+                <button value="+" id="addition" onClick="display(document.getElementById('addition').value)" class="btn-style opera-bg value align operator">+</button>
             </div>
             <div class="rows">
                 <button value="7" class="btn-style num-bg num first-child">7</button>
@@ -29,17 +31,20 @@
             </div>
 
             <div class="rows">
-                <button value="1" id="numberOne" onclick="display('numberOne')" class="btn-style num-bg num first-child">1</button>
+                <button value="1" id="numberOne" onclick="display(document.getElementById('numberOne').value)" class="btn-style num-bg num first-child">1</button>
                 <button value="2" class="btn-style num-bg num">2</button>
                 <button value="3" class="btn-style num-bg num">3</button>
                 <button value="/" class="btn-style opera-bg operator">/</button>
             </div>
             <div class="rows">
                 <button value="0" class="num-bg zero" id="delete">0</button>
-                <button value="=" id="eqn-bg" onClick="display('eqn-bg')" class="eqn align">=</button>
+                <button value="=" id="eqn-bg" onClick="document.getElementById('resultInput').value = eval(document.getElementById('resultInput').value)" class="eqn align">=</button>
             </div>
             <script>
-                function display(id) { document.getElementById('result').innerHTML = document.getElementById(id).value;}
+                function display(result) {
+                    document.getElementById('resultInput').value = document.getElementById('resultInput').value + result;
+
+                }
             </script>
         </div>
     </div>
