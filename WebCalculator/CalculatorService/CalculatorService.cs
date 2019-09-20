@@ -12,7 +12,7 @@ namespace CalculatorService
         {
             double result = objFirstNumber + objSecondNumber;
             
-            return result;
+            return -1;
         }
     }
 }

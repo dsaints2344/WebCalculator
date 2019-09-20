@@ -24,7 +24,7 @@ namespace WebCalculator.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            return View("index");
         }
 
         [ChildActionOnly]
@@ -32,5 +32,13 @@ namespace WebCalculator.Controllers
         {
             return new FilePathResult(path, "text/html");
         }
+
+        public JsonResult Calculate(double first, double second)
+        {
+            CalculatorService.CalculatorService calculate = new CalculatorService.CalculatorService();
+            var result = calculate.Addition(first, second);
+            return Json(new { result = result }, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

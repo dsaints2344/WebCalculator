@@ -1,7 +1,81 @@
-﻿@section SPAViews {
-    @Html.Action("GetHtmlPage", "controllername", new { path = "~/Views/Home/index.html" })
-}
-@section Scripts{
-    @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/app")
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="background">
+        <div id="result">
+            <input type="text" placeholder="0" name="Result" id="resultInput" />
+        </div>
+        <div id="main">
+            <div id="first-rows">
+                <button class="del-bg" id="delete">CE</button>
+                <button value="+" id="addition" onClick="display(document.getElementById('addition').value)" class="btn-style opera-bg value align operator">+</button>
+            </div>
+            <div class="rows">
+                <button value="7" class="btn-style num-bg num first-child">7</button>
+                <button value="8" class="btn-style num-bg num">8</button>
+                <button value="9" class="btn-style num-bg num">9</button>
+                <button value="-" class="btn-style opera-bg operator">-</button>
+            </div>
+            <div class="rows">
+                <button value="4" class="btn-style num-bg num first-child">4</button>
+                <button value="5" class="btn-style num-bg num">5</button>
+                <button value="6" class="btn-style num-bg num">6</button>
+                <button value="*" class="btn-style opera-bg operator">x</button>
+            </div>
+
+            <div class="rows">
+                <button value="1" id="numberOne" onclick="display(document.getElementById('numberOne').value)" class="btn-style num-bg num first-child">1</button>
+                <button value="2" class="btn-style num-bg num">2</button>
+                <button value="3" class="btn-style num-bg num">3</button>
+                <button value="/" class="btn-style opera-bg operator">/</button>
+            </div>
+            <div class="rows">
+                <button value="0" class="num-bg zero" id="delete">0</button>
+                <button value="=" id="eqn-bg" class="eqn align">=</button>
+            </div>
+            @section scripts
+            {
+                <script>
+
+                    $(function () {
+                        $("#eqn-bg").click(function () {
+                            var resultInput = $("#resultInput").val();
+                            Add();
+
+
+                        });
+
+                    });
+                    function display(result) {
+                        document.getElementById('resultInput').value = document.getElementById('resultInput').value + result;
+
+                    }
+
+                    function Add() {
+                        var resultInput = $("#resultInput").val();
+                        var firstNumber = parseInt(resultInput.split('+')[0]);
+                        var secondNumber = parseInt(resultInput.split('+')[1]);
+
+
+                        $.get("/Home/Calculate/", { first: firstNumber, second: secondNumber }, function (response) {
+                            var result = response.result;
+                            $("#resultInput").val(result);
+                        });
+                    }
+
+                </script>
+
+
+
+            }
+        </div>
+    </div>
+</body>
+</html>

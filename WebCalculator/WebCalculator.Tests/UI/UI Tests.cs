@@ -29,7 +29,7 @@ namespace WebCalculator.Tests.UI
         {
            
             driver.Url =
-                @"C:\Users\ddelo\source\repos\WebCalculator\WebCalculator\WebCalculator\Views\Home\index.html";
+                @"http://localhost:50728/Home/Index";
             driver.FindElement(By.Id("numberOne")).Click();
             Assert.AreEqual("1", FindResultValue());
             driver.FindElement(By.Id("addition")).Click();
@@ -37,6 +37,7 @@ namespace WebCalculator.Tests.UI
             driver.FindElement(By.Id("numberOne")).Click();
             Assert.AreEqual("1+1", FindResultValue());
             driver.FindElement(By.Id("eqn-bg")).Click();
+            Thread.Sleep(3000);
             Assert.AreEqual("2", FindResultValue());
             
         }
