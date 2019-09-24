@@ -21,19 +21,19 @@
                 <button value="7" class="btn-style num-bg num first-child">7</button>
                 <button value="8" class="btn-style num-bg num">8</button>
                 <button value="9" class="btn-style num-bg num">9</button>
-                <button value="-" class="btn-style opera-bg operator">-</button>
+                <button value="-" class="btn-style opera-bg operator" id="subtraction" onclick="display(document.getElementById('subtraction').value)">-</button>
             </div>
             <div class="rows">
                 <button value="4" class="btn-style num-bg num first-child">4</button>
                 <button value="5" class="btn-style num-bg num">5</button>
                 <button value="6" class="btn-style num-bg num">6</button>
-                <button value="*" class="btn-style opera-bg operator">x</button>
+                <button value="*" id="multiplication" class="btn-style opera-bg operator" onclick="display(document.getElementById('multiplication').value)">x</button>
             </div>
 
             <div class="rows">
                 <button value="1" id="numberOne" onclick="display(document.getElementById('numberOne').value)" class="btn-style num-bg num first-child">1</button>
-                <button value="2" class="btn-style num-bg num">2</button>
-                <button value="3" class="btn-style num-bg num">3</button>
+                <button value="2" class="btn-style num-bg num" id="numberTwo" onclick="display(document.getElementById('numberTwo').value)">2</button>
+                <button value="3" id="numberThree" class="btn-style num-bg num" onclick="display(document.getElementById('numberThree').value)">3</button>
                 <button value="/" class="btn-style opera-bg operator">/</button>
             </div>
             <div class="rows">
@@ -48,13 +48,15 @@
                         if (resultInput.contains('+')) {
                             Add();
                         }
-                        
+                        if (resultInput.contains('*')) {
+                            multiply();
+                        }
 
                     });
 
                 });
                 function display(result) {
-                    document.getElementById('resultInput').value = document.getElementById('resultInput').value + result;
+                    document.getElementById('resultInput').value = document.getElementById('resultInput').value + result;;
 
                 }
 
@@ -63,6 +65,17 @@
                     var firstNumber = parseInt(resultInput.split('+')[0]);
                     var secondNumber = parseInt(resultInput.split('+')[1]);
 
+
+                    $.get("/Home/Calculate/", { first: firstNumber, second: secondNumber }, function (response) {
+                        var result = response.result;
+                        $("#resultInput").val(result);
+                    });
+                }
+
+                function multiply() {
+                    var resultInput = $("#resultInput").val();
+                    var firstNumber = parseInt(resultInput.split('*')[0]);
+                    var secondNumber = parseInt(resultInput.split('*')[1]);
 
                     $.get("/Home/Calculate/", { first: firstNumber, second: secondNumber }, function (response) {
                         var result = response.result;

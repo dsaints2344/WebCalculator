@@ -29,17 +29,64 @@ namespace WebCalculator.Tests.UI
         {
            
             driver.Url =
-                @"http://localhost:50728/Home/Index";
+                @"C:\Users\ddelo\source\repos\WebCalculator\WebCalculator\WebCalculator\Views\Home\index.html";
             driver.FindElement(By.Id("numberOne")).Click();
             Assert.AreEqual("1", FindResultValue());
-            driver.FindElement(By.Id("addition")).Click();
-            Assert.AreEqual("1+", FindResultValue());
+//            driver.FindElement(By.Id("addition")).Click();
+//            Assert.AreEqual("1+", FindResultValue());
+//            driver.FindElement(By.Id("numberOne")).Click();
+//            Assert.AreEqual("1+1", FindResultValue());
+//            driver.FindElement(By.Id("eqn-bg")).Click();
+//            Thread.Sleep(3000);
+//            Assert.AreEqual("2", FindResultValue());
+
+        }
+
+        [Test]
+        public void NumbersSubtraction()
+        {
+            driver.Url =
+                @"C:\Users\ddelo\source\repos\WebCalculator\WebCalculator\WebCalculator\Views\Home\index.html";
+            driver.FindElement(By.Id("numberTwo")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("subtraction")).Click();
+            Thread.Sleep(3000);
             driver.FindElement(By.Id("numberOne")).Click();
-            Assert.AreEqual("1+1", FindResultValue());
             driver.FindElement(By.Id("eqn-bg")).Click();
             Thread.Sleep(3000);
-            Assert.AreEqual("2", FindResultValue());
-            
+            Assert.AreEqual("1", FindResultValue());
+        }
+
+        [Test]
+        public void NumberMultiplication()
+        {
+            driver.Url =
+                @"C:\Users\ddelo\source\repos\WebCalculator\WebCalculator\WebCalculator\Views\Home\index.html";
+            driver.FindElement(By.Id("numberTwo")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("multiplication")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("numberTwo")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("eqn-bg")).Click();
+            Thread.Sleep(3000);
+            Assert.AreEqual("4",FindResultValue());
+        }
+
+        [Test]
+        public void ThreeMultiplicationByThree()
+        {
+            driver.Url =
+                @"C:\Users\ddelo\source\repos\WebCalculator\WebCalculator\WebCalculator\Views\Home\index.html";
+            driver.FindElement(By.Id("numberThree")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("multiplication")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("numberTwo")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("eqn-bg")).Click();
+            Thread.Sleep(3000);
+            Assert.AreEqual("6", FindResultValue());
         }
 
         private string FindResultValue()

@@ -70,6 +70,16 @@
                         });
                     }
 
+                    function multiply() {
+                        var resultInput = $("#resultInput").val();
+                        var firstNumber = parseInt(resultInput.split('*')[0]);
+                        var secondNumber = parseInt(resultInput.split('*')[1]);
+
+                        $.get("/Home/Calculate/", { first: firstNumber, second: secondNumber }, function (response) {
+                            var result = response.result;
+                            $("#resultInput").val(result);
+                        });
+
                 </script>
 
 
